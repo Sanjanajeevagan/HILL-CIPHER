@@ -1,11 +1,8 @@
-# HILL CIPHER
+# EX. NO: 3 HILL CIPHER
 HILL CIPHER
-EX. NO: 3 AIM:
- 
 
-IMPLEMENTATION OF HILL CIPHER
- 
-## To write a C program to implement the hill cipher substitution techniques.
+## AIM 
+To write a C program to implement the hill cipher substitution techniques.
 
 ## DESCRIPTION:
 
@@ -29,7 +26,52 @@ STEP-4: Multiply the two matrices to obtain the cipher text of length three.
 STEP-5: Combine all these groups to get the complete cipher text.
 
 ## PROGRAM 
+```PY
+#include <stdio.h>
+
+int main() {
+    int key[3][3], pt[3], ct[3];
+    char plaintext[4];
+    int i, j;
+
+    printf("Enter 3-letter plaintext (CAPS): ");
+    scanf("%s", plaintext);
+
+    printf("Enter 3x3 key matrix:\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            scanf("%d", &key[i][j]);
+        }
+    }
+
+    // Convert plaintext to numbers
+    for(i = 0; i < 3; i++) {
+        pt[i] = plaintext[i] - 'A';
+    }
+
+    // Encryption
+    for(i = 0; i < 3; i++) {
+        ct[i] = 0;
+        for(j = 0; j < 3; j++) {
+            ct[i] += key[i][j] * pt[j];
+        }
+        ct[i] = ct[i] % 26;
+    }
+
+    printf("Cipher Text: ");
+    for(i = 0; i < 3; i++) {
+        printf("%c", ct[i] + 'A');
+    }
+
+    return 0;
+}
+
+
+```
 
 ## OUTPUT
+<img width="438" height="253" alt="image" src="https://github.com/user-attachments/assets/e51ef061-b80d-4446-953c-75f9606dc113" />
+
 
 ## RESULT
+Thus te program has been implemented successfully using hill Cipher.
